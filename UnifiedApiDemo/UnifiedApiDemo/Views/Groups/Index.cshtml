@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Microsoft.Graph.Group>
+
+
+<h3>Active Directory Groups</h3>
+
+<table class="table">
+  <tr>
+    <th>Display Name</th>
+    <th>Group Type</th>
+    <th>Email</th>
+    <th></th>
+  </tr>
+
+  @foreach (Microsoft.Graph.Group group in Model) {
+    <tr>
+      <td>@group.displayName</td>
+      <td>@(group.groupType == null ? "Security" : group.groupType)</td>
+      <td>@group.mail</td>
+      <td><a href="#">Delete</a></td>
+    </tr>
+  }
+
+</table>

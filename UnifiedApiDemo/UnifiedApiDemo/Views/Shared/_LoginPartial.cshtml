@@ -1,0 +1,13 @@
+﻿@{
+  string token = (string)Session["access_token"];
+  if (string.IsNullOrEmpty(token)) {
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="@Url.Action("SignIn", "Account", null, Request.Url.Scheme)">Login</a></li>
+    </ul>
+  }
+  else {
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="@Url.Action("SignOut", "Account", null, Request.Url.Scheme)">Logout</a></li>
+    </ul>
+  }
+}

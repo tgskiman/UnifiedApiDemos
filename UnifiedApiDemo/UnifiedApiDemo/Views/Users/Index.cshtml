@@ -1,0 +1,26 @@
+﻿@model IEnumerable<UnifiedApiDemo.Models.UserInfo>
+
+
+<h2>Users</h2>
+
+<table class="table">
+  <tr>
+    <th>Display Name</th>
+
+    <th>User Principal Name</th>
+    <th>Department</th>
+    <th>Job Title</th>
+    <th>Usage Location</th>
+  </tr>
+
+  @foreach (var item in Model) {
+    <tr>
+      <td>@item.displayName</td>
+      <td>@item.userPrincipalName</td>
+      <td>@item.department</td>
+      <td>@item.jobTitle</td>
+      <td>@item.usageLocation</td>
+    </tr>
+  }
+
+</table>

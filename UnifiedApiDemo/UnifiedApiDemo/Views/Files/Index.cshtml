@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Microsoft.Graph.Item>
+
+<h3>Files</h3>
+
+<table class="table">
+  <tr>
+    <th>File Name</th>
+    <th>File size</th>
+    <th>Created</th>
+    <th>Created By</th>
+    <th>Modifed</th>
+    <th>Modifed By</th>
+  </tr>
+
+  @foreach (Microsoft.Graph.Item item in Model) {
+    if (item.type == "File") {
+      Microsoft.Graph.File file = item as Microsoft.Graph.File;    
+      <tr>
+        <td>
+          <a href="@file.contentUrl" target="_blank">
+            @file.name
+          </a>
+        </td>
+        <td>@((file.size / 1000).ToString("#,##0")) MB</td>
+        <td>@file.dateTimeCreated.DateTime.ToShortDateString()</td>
+        <td>@(file.createdBy.user == null ? "none" : file.createdBy.user.displayName)</td>
+        <td>@file.dateTimeLastModified.DateTime.ToShortDateString()</td>
+        <td>@(file.lastModifiedBy.user == null ? "none" : file.lastModifiedBy.user.displayName)</td>
+      </tr>
+    }
+  }
+
+</table>
+

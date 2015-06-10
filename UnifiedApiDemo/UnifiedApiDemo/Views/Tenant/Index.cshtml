@@ -1,0 +1,38 @@
+﻿@model Microsoft.Graph.ITenantDetail
+@using System.Linq
+
+
+<h4>Active Directory Information:</h4>
+<dl class="dl-horizontal">
+  <dt>Object ID:</dt>
+  <dd>@Model.objectId</dd>
+  <dt>Object Type:</dt>
+  <dd>@Model.objectType</dd>
+</dl>
+
+<h4>Company Information:</h4>
+<dl class="dl-horizontal">
+  <dt>Display Name:</dt>
+  <dd>@Model.displayName</dd>
+  <dt>Location</dt>
+  <dd>@Model.city, @Model.state</dd>
+  <dt>Preferred Language:</dt>
+  <dd>@Model.preferredLanguage-@Model.countryLetterCode</dd>
+</dl>
+
+<h4>Verified Domains:</h4>
+<ul>
+  @foreach (var domain in Model.verifiedDomains) {
+    <li>@domain.name</li>
+  }
+</ul>
+
+<h4>Provisioned Plans:</h4>
+<ul>
+  @foreach (var plan in Model.provisionedPlans) {
+    <li>@plan.service (@plan.capabilityStatus)</li>
+  }
+</ul>
+
+
+

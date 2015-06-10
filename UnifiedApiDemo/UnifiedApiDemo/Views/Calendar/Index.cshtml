@@ -1,0 +1,31 @@
+﻿@model IEnumerable<UnifiedApiDemo.Models.OfficeCalendarEvent>
+
+<h3>Calendar Events</h3>
+
+<table class="table">
+  <tr>
+    <th>Subject</th>
+    <th>Organizer</th>
+    <th>Start Time Zone</th>
+    <th>Start</th>
+    <th>End</th>
+    <th>Event Type</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  @foreach (var calendarEvent in Model) {
+    <tr>
+      <td>@calendarEvent.Subject</td>
+      <td>@calendarEvent.Organizer.EmailAddress.Name</td>
+      <td>@calendarEvent.StartTimeZone</td>
+      <td>@calendarEvent.Start.ToString("ddd MM/dd/yy  h:mm tt")</td>
+      <td>@calendarEvent.End.ToString("ddd MM/dd/yy  h:mm tt")</td>
+      <td>@calendarEvent.Type</td>
+      <td><a href="#">Read</a></td>
+      <td><a href="#">Delete</a></td>
+    </tr>
+  }
+
+</table>
+

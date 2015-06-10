@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Microsoft.Graph.Message>
+
+<h3>Mail Messages</h3>
+
+<table class="table">
+  <tr>
+    <th>Subject</th>
+    <th>From</th>
+    <th>Sent</th>
+    <th>Received</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  @foreach (Microsoft.Graph.Message message in Model) {
+      <tr>
+        <td>@message.Subject</td>
+        <td>@message.From.EmailAddress.Name</td>
+        <td>@message.DateTimeReceived.Value.ToString("ddd MM/dd/yy  h:mm tt")</td>
+        <td>@message.DateTimeSent.Value.ToString("ddd MM/dd/yy  h:m tt")</td>
+        <td><a href="#">Read</a></td>
+        <td><a href="#">Delete</a></td>
+      </tr>
+  }
+
+</table>
+
